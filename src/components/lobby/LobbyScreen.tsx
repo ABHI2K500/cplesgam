@@ -3,6 +3,7 @@ import { ArrowRight, Flame, Heart, Loader2, Mic, RotateCw } from 'lucide-react';
 import AppShell from '@/components/ui/AppShell';
 import Button from '@/components/ui/Button';
 import { createRoom, joinRoom } from '@/lib/rooms';
+import { isSupabaseConfigured } from '@/lib/supabase';
 import { createPlayer } from '@/lib/session';
 import type { RoomPlayer } from '@/types/game';
 
@@ -85,7 +86,7 @@ export default function LobbyScreen({ existingPlayer, onEnterRoom }: LobbyScreen
           </ul>
           <p className="text-xs text-royal-800/60">
             Adults only. Every challenge is optional, so play only with consent and respect each other's limits.
-            {!import.meta.env.VITE_SUPABASE_URL && ' Local mode is active: open this app in two browser tabs to play.'}
+            {!isSupabaseConfigured && ' Local mode is active: open this app in two browser tabs to play.'}
           </p>
         </section>
 
